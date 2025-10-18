@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  jupyter:
+    image: jupyter/all-spark-notebook
+    container_name: jupyter_with_pyspark
+    ports:
+      - "8888:8888"
+    
+    # automount the host's local directory ./notebooks to the container working directory /home/jovyan/work
+    # so that it mirrors any changes locally
+    volumes:
+      - ./notebooks:/home/jovyan/work
+     
+    # can declare a token instead of having jupyter generate a one-time token each time
+    # environment:
+    #   - JUPYTER_TOKEN=${JUPYTER_TOKEN}
